@@ -1,0 +1,17 @@
+<Project>
+  <PropertyGroup>
+    <!-- Placeholder until DesignPatterns is published to nuget.org -->
+    <DesignPatternsPackageVersion>0.0.0-local</DesignPatternsPackageVersion>
+
+    <DesignPatternsRepoRoot>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)../DesignPatterns'))</DesignPatternsRepoRoot>
+    <DesignPatternsLocalAvailable Condition="Exists('$(DesignPatternsRepoRoot)/DesignPatterns.slnx')">true</DesignPatternsLocalAvailable>
+
+    <!-- Default: sibling ../DesignPatterns clone. Set false when consuming a published NuGet package. -->
+    <UseLocalDesignPatterns Condition="'$(UseLocalDesignPatterns)' == ''">true</UseLocalDesignPatterns>
+
+    <DesignPatternsRuntimeProject>$(DesignPatternsRepoRoot)/DesignPatterns/DesignPatterns.csproj</DesignPatternsRuntimeProject>
+    <DesignPatternsGeneratorProject>$(DesignPatternsRepoRoot)/DesignPatterns.SourceGenerators/DesignPatterns.SourceGenerators.csproj</DesignPatternsGeneratorProject>
+    <DesignPatternsDiProject>$(DesignPatternsRepoRoot)/DesignPatterns.Extensions.DependencyInjection/DesignPatterns.Extensions.DependencyInjection.csproj</DesignPatternsDiProject>
+    <DesignPatternsDiTargets>$(DesignPatternsRepoRoot)/DesignPatterns.Extensions.DependencyInjection/build/DesignPatterns.Extensions.DependencyInjection.targets</DesignPatternsDiTargets>
+  </PropertyGroup>
+</Project>

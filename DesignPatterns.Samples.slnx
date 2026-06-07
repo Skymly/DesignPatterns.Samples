@@ -1,0 +1,25 @@
+<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path=".gitignore" />
+    <File Path="AGENTS.md" />
+    <File Path="Directory.Build.props" />
+    <File Path="Directory.Build.targets" />
+    <File Path="global.json" />
+    <File Path="LICENSE" />
+    <File Path="README.md" />
+  </Folder>
+  <Folder Name="/Samples/">
+    <Project Path="DesignPatterns.Samples.Chain/DesignPatterns.Samples.Chain.csproj" />
+    <Project Path="DesignPatterns.Samples.Composite/DesignPatterns.Samples.Composite.csproj" />
+    <Project Path="DesignPatterns.Samples.Decorator/DesignPatterns.Samples.Decorator.csproj" />
+    <Project Path="DesignPatterns.Samples.DependencyInjection/DesignPatterns.Samples.DependencyInjection.csproj" />
+    <Project Path="DesignPatterns.Samples.EventAggregator/DesignPatterns.Samples.EventAggregator.csproj" />
+    <Project Path="DesignPatterns.Samples.Factory/DesignPatterns.Samples.Factory.csproj" />
+    <Project Path="DesignPatterns.Samples.GenerateSingleton/DesignPatterns.Samples.GenerateSingleton.csproj" />
+    <Project Path="DesignPatterns.Samples.RegisterFactory/DesignPatterns.Samples.RegisterFactory.csproj" />
+    <Project Path="DesignPatterns.Samples.Strategy/DesignPatterns.Samples.Strategy.csproj" />
+  </Folder>
+  <Folder Name="/Build/">
+    <Project Path="build/_build.csproj" />
+  </Folder>
+</Solution>

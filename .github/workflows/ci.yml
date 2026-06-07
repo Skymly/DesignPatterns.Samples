@@ -1,0 +1,51 @@
+name: CI
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  samples:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout DesignPatterns (sibling)
+        uses: actions/checkout@v4
+        with:
+          repository: Skymly/DesignPatterns
+          path: DesignPatterns
+
+      - name: Checkout DesignPatterns.Samples
+        uses: actions/checkout@v4
+        with:
+          path: DesignPatterns.Samples
+
+      - name: Setup .NET SDK
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+
+      - name: Cache NuGet packages
+        uses: actions/cache@v4
+        with:
+          path: ~/.nuget/packages
+          key: ${{ runner.os }}-nuget-dp-samples-${{ hashFiles('DesignPatterns.Samples/**/*.csproj', 'DesignPatterns.Samples/global.json', 'DesignPatterns/**/*.csproj') }}
+          restore-keys: |
+            ${{ runner.os }}-nuget-dp-samples-
+            ${{ runner.os }}-nuget-
+
+      - name: Run samples via Nuke
+        working-directory: DesignPatterns.Samples
+        run: dotnet run --project build/_build.csproj -- --root . --target Ci --configuration Release

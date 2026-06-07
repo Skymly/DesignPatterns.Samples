@@ -2,31 +2,20 @@
 
 ## Scope
 
-Runnable console samples only. Generator, runtime, and analyzer changes belong in [DesignPatterns](https://github.com/Skymly/DesignPatterns).
+This repository contains **sample console apps only**. Do not add generators or library code here — change [DesignPatterns](https://github.com/Skymly/DesignPatterns) instead.
 
-## Layout
+## Local development
 
-| Path | Purpose |
-|------|---------|
-| `DesignPatterns.Samples.*/` | One sample per design pattern |
-| `Directory.Build.props` | `UseLocalDesignPatterns` (default `true` → sibling `../DesignPatterns`) |
-| `Directory.Build.targets` | ProjectReference vs future NuGet by `DesignPatternsSampleKind` |
-| `build/Program.cs` | Nuke `Ci` — build and run every sample |
-
-## Commands
-
-```powershell
-dotnet build DesignPatterns.Samples.slnx -c Release
-./build.ps1 --target Ci --configuration Release
-```
-
-CI checks out [Skymly/DesignPatterns](https://github.com/Skymly/DesignPatterns) as a sibling folder so `UseLocalDesignPatterns=true` works without a published NuGet package.
+- **Default sibling layout**: `../DesignPatterns/` with `UseLocalDesignPatterns=true` when `DesignPatterns.slnx` exists (`Directory.Build.props`).
+- **Run one sample**: `dotnet run --project DesignPatterns.Samples.Strategy -c Release`
+- **CI**: `./build.ps1 --target Ci --configuration Release` from repo root.
 
 ## Language
 
-- User-facing README: English (match Observables.Samples).
+- User chat: 简体中文 (unless requested otherwise).
 - Commit messages and GitHub Issue/PR text: **English**.
 
 ## Git
 
 - Do not commit or push unless the user asks.
+- Do not bump DesignPatterns package versions without user approval.

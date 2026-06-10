@@ -46,7 +46,7 @@ Equivalent: `dotnet run --project build/_build.csproj -- --root . --target Ci --
 |--------|--------------|
 | **DesignPatterns.Samples.Strategy** | `[RegisterStrategy]` → Keys + static `Instance` registry |
 | **DesignPatterns.Samples.Chain** | `[HandlerOrder]` → generated handler pipeline |
-| **DesignPatterns.Samples.Composite** | `[CompositePart]` → catalog + `BuildRoot()` |
+| **DesignPatterns.Samples.Composite** | `[CompositePart]` → `BuildForest()` / `TraverseForest` (+ `BuildRoot`, manual builder) |
 | **DesignPatterns.Samples.Factory** | `[RegisterFactory]` factory registry |
 | **DesignPatterns.Samples.RegisterFactory** | Manual `FactoryRegistryBuilder` registration |
 | **DesignPatterns.Samples.Decorator** | `[Decorator]` → decorator stack builder |

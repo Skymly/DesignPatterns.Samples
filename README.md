@@ -44,7 +44,7 @@ Equivalent: `dotnet run --project build/_build.csproj -- --root . --target Ci --
 
 | Sample | Demonstrates |
 |--------|--------------|
-| **DesignPatterns.Samples.Strategy** | `[RegisterStrategy]` → Keys + static `Instance` registry |
+| **DesignPatterns.Samples.Strategy** | `[RegisterStrategy]` → Keys + static `Instance` registry; sync pay + async `ExecuteAsync` |
 | **DesignPatterns.Samples.Chain** | `[HandlerOrder]` → generated handler pipeline |
 | **DesignPatterns.Samples.Composite** | `[CompositePart]` → `BuildForest()` / `TraverseForest` (+ `BuildRoot`, manual builder) |
 | **DesignPatterns.Samples.Factory** | `[RegisterFactory]` factory registry |

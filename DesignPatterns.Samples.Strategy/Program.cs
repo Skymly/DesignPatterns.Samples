@@ -1,3 +1,4 @@
+using DesignPatterns.Behavioral;
 using Strategy.Sample;
 
 // Without DI package: use generated static Instance (eager new()).
@@ -19,3 +20,14 @@ if (!registry.TryGet("unknown", out _))
 {
     Console.WriteLine("Unknown key not found (expected).");
 }
+
+var refundRegistry = RefundProcessorRegistry.Instance;
+var standardRefund = await refundRegistry.ExecuteAsync<IRefundProcessor, string, decimal>(
+    RefundProcessorKeys.Standard,
+    50m);
+var expressRefund = await refundRegistry.ExecuteAsync<IRefundProcessor, string, decimal>(
+    RefundProcessorKeys.Express,
+    75m);
+
+Console.WriteLine(standardRefund);
+Console.WriteLine(expressRefund);

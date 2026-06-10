@@ -49,7 +49,7 @@ Equivalent: `dotnet run --project build/_build.csproj -- --root . --target Ci --
 | **DesignPatterns.Samples.Composite** | `[CompositePart]` → `BuildForest()` / `TraverseForest` (+ `BuildRoot`, manual builder) |
 | **DesignPatterns.Samples.Factory** | `[RegisterFactory]` factory registry |
 | **DesignPatterns.Samples.RegisterFactory** | Manual `FactoryRegistryBuilder` registration |
-| **DesignPatterns.Samples.Decorator** | `[Decorator]` → decorator stack builder |
+| **DesignPatterns.Samples.Decorator** | `[Decorator]` → stack + `DecoratorOrder` + conditional `Add` |
 | **DesignPatterns.Samples.EventAggregator** | `IEventAggregator` publish/subscribe |
 | **DesignPatterns.Samples.GenerateSingleton** | `[GenerateSingleton]` lazy singleton |
 | **DesignPatterns.Samples.DependencyInjection** | `RegisterDi` for Strategy / Factory / Handler |

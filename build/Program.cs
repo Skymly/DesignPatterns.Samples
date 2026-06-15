@@ -27,6 +27,7 @@ sealed class Build : NukeBuild
         ("DesignPatterns.Samples.GenerateSingleton/DesignPatterns.Samples.GenerateSingleton.csproj", true),
         ("DesignPatterns.Samples.RegisterFactory/DesignPatterns.Samples.RegisterFactory.csproj", true),
         ("DesignPatterns.Samples.DependencyInjection/DesignPatterns.Samples.DependencyInjection.csproj", true),
+        ("DesignPatterns.Samples.State/DesignPatterns.Samples.State.csproj", true),
     ];
 
     public static int Main() => Execute<Build>(x => x.Ci);

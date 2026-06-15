@@ -1,6 +1,6 @@
 # DesignPatterns.Samples
 
-Runnable console applications for **[Skymly/DesignPatterns](https://github.com/Skymly/DesignPatterns)** — Strategy, Chain of Responsibility, Composite, Factory Registry, Decorator, Event Aggregator, Singleton, and MSDI integration.
+Runnable console applications for **[Skymly/DesignPatterns](https://github.com/Skymly/DesignPatterns)** — Strategy, Chain of Responsibility, Composite, Factory Registry, Decorator, Event Aggregator, State transition table, Singleton, and MSDI integration.
 
 ## Prerequisites
 
@@ -11,10 +11,12 @@ Runnable console applications for **[Skymly/DesignPatterns](https://github.com/S
 Samples default to a **local sibling** of the generator repo (no NuGet publish required yet):
 
 ```
-Skymly/
-  DesignPatterns/
-  DesignPatterns.Samples/    ← this repo
-  DesignPatterns.Docs/
+<workspace-root>/
+  Skymly/
+    DesignPatterns/
+      DesignPatterns/
+      DesignPatterns.Samples/    ← this repo
+      DesignPatterns.Docs/
 ```
 
 ```powershell
@@ -53,6 +55,7 @@ Equivalent: `dotnet run --project build/_build.csproj -- --root . --target Ci --
 | **DesignPatterns.Samples.EventAggregator** | `IEventAggregator` publish/subscribe |
 | **DesignPatterns.Samples.GenerateSingleton** | `[GenerateSingleton]` lazy singleton |
 | **DesignPatterns.Samples.DependencyInjection** | `RegisterDi` for Strategy / Factory / Handler |
+| **DesignPatterns.Samples.State** | Manual `TransitionTableBuilder` + `[StateMachine]` / `[Transition]` order lifecycle |
 
 ## Future NuGet consumption
 

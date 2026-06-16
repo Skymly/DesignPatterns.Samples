@@ -13,5 +13,8 @@
     <DesignPatternsGeneratorProject>$(DesignPatternsRepoRoot)/DesignPatterns.SourceGenerators/DesignPatterns.SourceGenerators.csproj</DesignPatternsGeneratorProject>
     <DesignPatternsDiProject>$(DesignPatternsRepoRoot)/DesignPatterns.Extensions.DependencyInjection/DesignPatterns.Extensions.DependencyInjection.csproj</DesignPatternsDiProject>
     <DesignPatternsDiTargets>$(DesignPatternsRepoRoot)/DesignPatterns.Extensions.DependencyInjection/build/DesignPatterns.Extensions.DependencyInjection.targets</DesignPatternsDiTargets>
+    <DesignPatternsAutofacProject>$(DesignPatternsRepoRoot)/DesignPatterns.Extensions.Autofac/DesignPatterns.Extensions.Autofac.csproj</DesignPatternsAutofacProject>
+    <DesignPatternsAutofacTargets>$(DesignPatternsRepoRoot)/DesignPatterns.Extensions.Autofac/build/DesignPatterns.Extensions.Autofac.targets</DesignPatternsAutofacTargets>
+    <DesignPatternsAnalyzersProject>$(DesignPatternsRepoRoot)/DesignPatterns.Analyzers/DesignPatterns.Analyzers.csproj</DesignPatternsAnalyzersProject>
   </PropertyGroup>
 </Project>

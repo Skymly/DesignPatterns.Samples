@@ -1,0 +1,11 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <RootNamespace>PluginAssemblies.Sample.Contracts</RootNamespace>
+    <Description>Shared contracts for the plugin-assemblies sample (no provider implementations).</Description>
+  </PropertyGroup>
+
+</Project>

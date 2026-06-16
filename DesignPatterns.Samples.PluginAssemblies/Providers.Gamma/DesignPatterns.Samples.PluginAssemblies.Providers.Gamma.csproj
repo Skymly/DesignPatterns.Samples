@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <RootNamespace>PluginAssemblies.Sample.Providers.Gamma</RootNamespace>
+    <DesignPatternsPluginProvider>true</DesignPatternsPluginProvider>
+    <Description>Gamma motion-control provider for the plugin-assemblies sample.</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Contracts\DesignPatterns.Samples.PluginAssemblies.Contracts.csproj" />
+  </ItemGroup>
+
+</Project>

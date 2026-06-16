@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using Nuke.Common;
 using Nuke.Common.Execution;
 using Nuke.Common.IO;
@@ -30,6 +31,15 @@ sealed class Build : NukeBuild
         ("DesignPatterns.Samples.State/DesignPatterns.Samples.State.csproj", true),
     ];
 
+    AbsolutePath PluginAssembliesHostProject =>
+        Root / "DesignPatterns.Samples.PluginAssemblies/Host/DesignPatterns.Samples.PluginAssemblies.Host.csproj";
+
+    AbsolutePath PluginAssembliesInvalidKeyProject =>
+        Root / "DesignPatterns.Samples.PluginAssemblies/Scenarios.InvalidKey/DesignPatterns.Samples.PluginAssemblies.Scenarios.InvalidKey.csproj";
+
+    AbsolutePath DesignPatternsAnalyzerTestsProject =>
+        Root / "../DesignPatterns/tests/DesignPatterns.Analyzers.Tests/DesignPatterns.Analyzers.Tests.csproj";
+
     public static int Main() => Execute<Build>(x => x.Ci);
 
     Target Ci => _ => _
@@ -54,5 +64,68 @@ sealed class Build : NukeBuild
                         .EnableNoBuild());
                 }
             }
+
+            RunPluginAssembliesScenarios();
         });
+
+    void RunPluginAssembliesScenarios()
+    {
+        Assert.FileExists(PluginAssembliesHostProject, $"Sample project not found: {PluginAssembliesHostProject}");
+        Assert.FileExists(PluginAssembliesInvalidKeyProject, $"Sample project not found: {PluginAssembliesInvalidKeyProject}");
+
+        DotNetBuild(s => s
+            .SetProjectFile(PluginAssembliesHostProject)
+            .SetConfiguration(Configuration)
+            .SetProperty("UseLocalDesignPatterns", UseLocalDesignPatterns));
+
+        DotNetRun(s => s
+            .SetProjectFile(PluginAssembliesHostProject)
+            .SetConfiguration(Configuration)
+            .EnableNoRestore()
+            .EnableNoBuild());
+
+        var missingProvider = StartDotNet(
+            $"run --project \"{PluginAssembliesHostProject}\" -c {Configuration} --no-build -- s2",
+            Root);
+        Assert.True(
+            missingProvider.ExitCode != 0,
+            "Scenario S2 (missing provider) should fail when 'beta' is configured without Providers.Beta.");
+        Assert.True(
+            missingProvider.Output.Contains("beta", StringComparison.OrdinalIgnoreCase),
+            "Scenario S2 output should mention the missing 'beta' provider key.");
+
+        var invalidKeyBuild = StartDotNet(
+            $"build \"{PluginAssembliesInvalidKeyProject}\" -c {Configuration}",
+            Root);
+        if (invalidKeyBuild.ExitCode != 0 && invalidKeyBuild.Output.Contains("DP025", StringComparison.Ordinal))
+        {
+            return;
+        }
+
+        Assert.FileExists(
+            DesignPatternsAnalyzerTestsProject,
+            $"DesignPatterns analyzer tests not found at {DesignPatternsAnalyzerTestsProject}. Clone the sibling DesignPatterns repo for S3 (DP025).");
+
+        DotNetTest(s => s
+            .SetProjectFile(DesignPatternsAnalyzerTestsProject)
+            .SetConfiguration(Configuration)
+            .SetFilter("FullyQualifiedName~UnknownRegistryKeyAnalyzerTests.ReportsDp025WhenStrategyRegistryKeyIsUnknown"));
+    }
+
+    static (int ExitCode, string Output) StartDotNet(string arguments, AbsolutePath workingDirectory)
+    {
+        using var process = Process.Start(new ProcessStartInfo
+        {
+            FileName = "dotnet",
+            Arguments = arguments,
+            WorkingDirectory = workingDirectory,
+            RedirectStandardOutput = true,
+            RedirectStandardError = true,
+            UseShellExecute = false,
+        }) ?? throw new InvalidOperationException("Failed to start dotnet.");
+
+        var output = process.StandardOutput.ReadToEnd() + process.StandardError.ReadToEnd();
+        process.WaitForExit();
+        return (process.ExitCode, output);
+    }
 }

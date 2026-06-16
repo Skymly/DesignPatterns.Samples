@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <RootNamespace>PluginAssemblies.Sample.Scenarios.InvalidKey</RootNamespace>
+    <DesignPatternsPluginAnalyzerDemo>true</DesignPatternsPluginAnalyzerDemo>
+    <Description>Compile-time DP025 demo for the plugin-assemblies sample (see README; CI uses analyzer tests).</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Contracts\DesignPatterns.Samples.PluginAssemblies.Contracts.csproj" />
+    <ProjectReference Include="..\Providers.Alpha\DesignPatterns.Samples.PluginAssemblies.Providers.Alpha.csproj" />
+  </ItemGroup>
+
+</Project>

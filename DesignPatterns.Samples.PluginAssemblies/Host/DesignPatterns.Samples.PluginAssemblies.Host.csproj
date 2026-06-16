@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <RootNamespace>PluginAssemblies.Sample.Host</RootNamespace>
+    <DesignPatternsSampleKind>PluginAssemblies</DesignPatternsSampleKind>
+    <Description>Autofac host for the plugin-assemblies sample.</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Contracts\DesignPatterns.Samples.PluginAssemblies.Contracts.csproj" />
+    <ProjectReference Include="..\Providers.Alpha\DesignPatterns.Samples.PluginAssemblies.Providers.Alpha.csproj" />
+    <ProjectReference Include="..\Providers.Gamma\DesignPatterns.Samples.PluginAssemblies.Providers.Gamma.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="App.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>

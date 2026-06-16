@@ -1,7 +1,7 @@
 <Project>
   <PropertyGroup>
     <!-- Placeholder until DesignPatterns is published to nuget.org -->
-    <DesignPatternsPackageVersion>0.0.0-local</DesignPatternsPackageVersion>
+    <DesignPatternsPackageVersion>0.1.0-preview5</DesignPatternsPackageVersion>
 
     <DesignPatternsRepoRoot>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)../DesignPatterns'))</DesignPatternsRepoRoot>
     <DesignPatternsLocalAvailable Condition="Exists('$(DesignPatternsRepoRoot)/DesignPatterns.slnx')">true</DesignPatternsLocalAvailable>
@@ -15,6 +15,7 @@
     <DesignPatternsDiTargets>$(DesignPatternsRepoRoot)/DesignPatterns.Extensions.DependencyInjection/build/DesignPatterns.Extensions.DependencyInjection.targets</DesignPatternsDiTargets>
     <DesignPatternsAutofacProject>$(DesignPatternsRepoRoot)/DesignPatterns.Extensions.Autofac/DesignPatterns.Extensions.Autofac.csproj</DesignPatternsAutofacProject>
     <DesignPatternsAutofacTargets>$(DesignPatternsRepoRoot)/DesignPatterns.Extensions.Autofac/build/DesignPatterns.Extensions.Autofac.targets</DesignPatternsAutofacTargets>
+    <DesignPatternsAppSettingsProject>$(DesignPatternsRepoRoot)/DesignPatterns.Extensions.AppSettings/DesignPatterns.Extensions.AppSettings.csproj</DesignPatternsAppSettingsProject>
     <DesignPatternsAnalyzersProject>$(DesignPatternsRepoRoot)/DesignPatterns.Analyzers/DesignPatterns.Analyzers.csproj</DesignPatternsAnalyzersProject>
   </PropertyGroup>
 </Project>

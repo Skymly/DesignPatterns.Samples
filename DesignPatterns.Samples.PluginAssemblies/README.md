@@ -22,16 +22,16 @@ Each provider assembly emits its own `{Contract}Registry` in the **contract name
 | ID | How to run | Expected result |
 |----|------------|-----------------|
 | **S1** | `dotnet run --project Host` | Starts; prints `Card=alpha`; `CardMotionRegistry.Keys` contains `alpha`, not `beta` |
-| **S2** | `dotnet run --project Host -- s2` | Exit code 1; message that `beta` is not registered (Providers.Beta not referenced) |
+| **S2** | `dotnet run --project Host -- s2` | Exit code 1; `App.config` key `CardMissing=beta` resolves via `RegistryConfiguration` but `beta` is not registered (Providers.Beta not referenced) |
 | **S3** | `dotnet test` in sibling DesignPatterns repo (`UnknownRegistryKeyAnalyzerTests`) or IDE on `Scenarios.InvalidKey` | Diagnostic **DP025** for unknown literal key |
 
-`Host/App.config` selects `Card=alpha` and `FC=gamma` for S1.
+`Host/App.config` selects `Card=alpha` and `FC=gamma` for S1. The host uses `DesignPatterns.Extensions.AppSettings.RegistryConfiguration` to map those keys to strategy registries (`CardMissing=beta` drives S2).
 
 `Scenarios.InvalidKey/InvalidKeyUsage.cs` shows the invalid literal pattern; DP025 is enforced by the DesignPatterns analyzer (IDE or NuGet package). Local sibling `ProjectReference` builds may not surface Info-level diagnostics on the command line — CI runs the analyzer unit test instead.
 
 ## Prerequisites
 
-Sibling [DesignPatterns](https://github.com/Skymly/DesignPatterns) clone with `DesignPatterns.Extensions.Autofac` (merged on `main`).
+Sibling [DesignPatterns](https://github.com/Skymly/DesignPatterns) clone with `DesignPatterns.Extensions.Autofac` and `DesignPatterns.Extensions.AppSettings` (merged on `main`).
 
 ```powershell
 cd DesignPatterns.Samples

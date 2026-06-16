@@ -1,17 +1,12 @@
 using System.Configuration;
 using Autofac;
+using DesignPatterns.Extensions.AppSettings;
 using PluginAssemblies.Sample.Contracts;
 using PluginAssemblies.Sample.Providers.Alpha;
 using PluginAssemblies.Sample.Providers.Gamma;
 
 var scenario = args.FirstOrDefault() ?? "s1";
-var cardKey = ConfigurationManager.AppSettings["Card"] ?? CardMotionKeys.Alpha;
-var fcKey = ConfigurationManager.AppSettings["FC"] ?? FCControlKeys.Gamma;
-
-if (scenario.Equals("s2", StringComparison.OrdinalIgnoreCase))
-{
-    cardKey = "beta";
-}
+var cardAppSettingsKey = scenario.Equals("s2", StringComparison.OrdinalIgnoreCase) ? "CardMissing" : "Card";
 
 var builder = new ContainerBuilder();
 builder.RegisterModule<AlphaProviderModule>();
@@ -41,16 +36,32 @@ if (scenario.Equals("s1", StringComparison.OrdinalIgnoreCase))
     }
 }
 
-if (!cardRegistry.TryGet(cardKey, out var card))
+if (!RegistryConfiguration.TryResolveConfigured(
+        cardRegistry,
+        cardAppSettingsKey,
+        out var card,
+        defaultKey: CardMotionKeys.Alpha))
 {
+    var configuredValue = ConfigurationManager.AppSettings[cardAppSettingsKey];
+    var strategyKey = string.IsNullOrWhiteSpace(configuredValue) ? CardMotionKeys.Alpha : configuredValue;
     Console.Error.WriteLine(
-        $"Card provider '{cardKey}' is not registered. Available keys: {cardKeys}. " +
+        $"Card provider '{strategyKey}' is not registered. Available keys: {cardKeys}. " +
         "Reference the matching provider assembly (e.g. Providers.Beta for 'beta').");
     return 1;
 }
 
-if (!fcRegistry.TryGet(fcKey, out var fc) || !fcErrorRegistry.TryGet(fcKey, out var fcError))
+if (!RegistryConfiguration.TryResolveConfigured(
+        fcRegistry,
+        "FC",
+        out var fc,
+        defaultKey: FCControlKeys.Gamma)
+    || !RegistryConfiguration.TryResolveConfigured(
+        fcErrorRegistry,
+        "FC",
+        out var fcError,
+        defaultKey: FCControlKeys.Gamma))
 {
+    var fcKey = ConfigurationManager.AppSettings["FC"] ?? FCControlKeys.Gamma;
     Console.Error.WriteLine($"FC provider '{fcKey}' is not registered for both IFCControl and IFCError.");
     return 1;
 }

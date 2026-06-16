@@ -37,6 +37,9 @@ sealed class Build : NukeBuild
     AbsolutePath PluginAssembliesInvalidKeyProject =>
         Root / "DesignPatterns.Samples.PluginAssemblies/Scenarios.InvalidKey/DesignPatterns.Samples.PluginAssemblies.Scenarios.InvalidKey.csproj";
 
+    AbsolutePath PluginAssembliesDuplicateKeyProject =>
+        Root / "DesignPatterns.Samples.PluginAssemblies/Scenarios.DuplicateKey/DesignPatterns.Samples.PluginAssemblies.Scenarios.DuplicateKey.csproj";
+
     AbsolutePath DesignPatternsAnalyzerTestsProject =>
         Root / "../DesignPatterns/tests/DesignPatterns.Analyzers.Tests/DesignPatterns.Analyzers.Tests.csproj";
 
@@ -72,6 +75,7 @@ sealed class Build : NukeBuild
     {
         Assert.FileExists(PluginAssembliesHostProject, $"Sample project not found: {PluginAssembliesHostProject}");
         Assert.FileExists(PluginAssembliesInvalidKeyProject, $"Sample project not found: {PluginAssembliesInvalidKeyProject}");
+        Assert.FileExists(PluginAssembliesDuplicateKeyProject, $"Sample project not found: {PluginAssembliesDuplicateKeyProject}");
 
         DotNetBuild(s => s
             .SetProjectFile(PluginAssembliesHostProject)
@@ -110,6 +114,19 @@ sealed class Build : NukeBuild
             .SetProjectFile(DesignPatternsAnalyzerTestsProject)
             .SetConfiguration(Configuration)
             .SetFilter("FullyQualifiedName~UnknownRegistryKeyAnalyzerTests.ReportsDp025WhenStrategyRegistryKeyIsUnknown"));
+
+        var duplicateKeyBuild = StartDotNet(
+            $"build \"{PluginAssembliesDuplicateKeyProject}\" -c {Configuration}",
+            Root);
+        if (duplicateKeyBuild.ExitCode != 0 && duplicateKeyBuild.Output.Contains("DP033", StringComparison.Ordinal))
+        {
+            return;
+        }
+
+        DotNetTest(s => s
+            .SetProjectFile(DesignPatternsAnalyzerTestsProject)
+            .SetConfiguration(Configuration)
+            .SetFilter("FullyQualifiedName~CrossAssemblyRegistryKeyAnalyzerTests.ReportsDp033WhenSameStrategyKeyExistsInTwoReferencedAssemblies"));
     }
 
     static (int ExitCode, string Output) StartDotNet(string arguments, AbsolutePath workingDirectory)

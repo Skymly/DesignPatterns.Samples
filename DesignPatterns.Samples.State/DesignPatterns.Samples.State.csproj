@@ -6,8 +6,8 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <RootNamespace>DesignPatterns.Samples.State</RootNamespace>
-    <DesignPatternsSampleKind>Core</DesignPatternsSampleKind>
-    <Description>Console sample for state transition tables (manual builder and [StateMachine] generator).</Description>
+    <DesignPatternsSampleKind>DependencyInjection</DesignPatternsSampleKind>
+    <Description>Console sample for state transition tables: manual builder, [StateMachine] generator, guard delegates, and DI integration.</Description>
   </PropertyGroup>
 
 </Project>

@@ -26,6 +26,23 @@ Console.WriteLine();
 Console.WriteLine($"Publishing: InventoryLowEvent {{ ProductId = \"SKU-42\", Remaining = 3 }}");
 await aggregator.PublishAsync(new InventoryLowEvent("SKU-42", 3));
 
+// Error isolation: ContinueOnError lets all handlers run even if one throws.
+Console.WriteLine();
+Console.WriteLine("=== Error isolation + publish tracing (ContinueOnError) ===");
+
+var resilientAggregator = new EventAggregator();
+resilientAggregator.Subscribe(new FailingHandler());
+resilientAggregator.Subscribe(new EmailNotificationHandler());
+
+var resilientTrace = await resilientAggregator.PublishTracedAsync(
+    new OrderPlacedEvent("ORD-003", 29.99m),
+    EventPublishErrorHandling.ContinueOnError);
+Console.WriteLine($"Trace: {resilientTrace.HandlerCount} handlers, has failures: {resilientTrace.HasFailures}");
+foreach (var step in resilientTrace.Steps)
+{
+    Console.WriteLine($"  [{step.Index}] {step.HandlerName} -> {step.Status}");
+}
+
 // --- Event and handler definitions ---
 
 public sealed record OrderPlacedEvent(string OrderId, decimal Total);
@@ -55,5 +72,13 @@ public sealed class InventoryLowHandler : IEventHandler<InventoryLowEvent>
     {
         Console.WriteLine($"  [Inventory] Alert: {evt.ProductId} has only {evt.Remaining} units remaining");
         return default;
+    }
+}
+
+public sealed class FailingHandler : IEventHandler<OrderPlacedEvent>
+{
+    public ValueTask HandleAsync(OrderPlacedEvent evt, CancellationToken cancellationToken = default)
+    {
+        throw new InvalidOperationException($"Simulated failure for order {evt.OrderId}");
     }
 }

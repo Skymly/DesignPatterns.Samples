@@ -62,6 +62,49 @@ Console.WriteLine($"Allowed triggers from Submitted: {string.Join(", ", submitte
 var paidAllowed = diTable.GetAllowedTriggers(OrderStatus.Paid);
 Console.WriteLine($"Allowed triggers from Paid (terminal): {(paidAllowed.Count == 0 ? "(none — terminal state)" : string.Join(", ", paidAllowed))}");
 
+// IStateMachine instance wrapper: tracks CurrentState automatically.
+Console.WriteLine();
+Console.WriteLine("=== IStateMachine instance wrapper ===");
+
+var machine = new StateMachine<OrderStatus, OrderTrigger>(diTable);
+Console.WriteLine($"Initial CurrentState: {machine.CurrentState}");
+
+if (machine.TryTransition(OrderTrigger.Submit, out var afterSubmit))
+{
+    Console.WriteLine($"After Submit: {machine.CurrentState}");
+}
+
+if (machine.TryTransition(OrderTrigger.Pay, out var afterPay))
+{
+    Console.WriteLine($"After Pay: {machine.CurrentState}");
+}
+
+Console.WriteLine();
+Console.WriteLine("=== Entry/exit actions (TryTransitionAsync) ===");
+
+var actionMachine = new StateMachine<OrderStatus, OrderTrigger>(diTable);
+Console.WriteLine($"Starting from: {actionMachine.CurrentState}");
+
+// TryTransitionAsync fires entry/exit actions.
+var submitResult = await actionMachine.TryTransitionAsync(OrderTrigger.Submit, CancellationToken.None);
+if (submitResult.Succeeded)
+{
+    Console.WriteLine($"After Submit: {actionMachine.CurrentState}");
+}
+
+var payResult = await actionMachine.TryTransitionAsync(OrderTrigger.Pay, CancellationToken.None);
+if (payResult.Succeeded)
+{
+    Console.WriteLine($"After Pay: {actionMachine.CurrentState}");
+}
+
+Console.WriteLine();
+Console.WriteLine("=== TransitionTrace (TryTransitionTracedAsync) ===");
+
+// TryTransitionTracedAsync is an extension on ITransitionTable, not on IStateMachine.
+var trace = await diTable.TryTransitionTracedAsync(OrderStatus.Draft, OrderTrigger.Submit, CancellationToken.None);
+Console.WriteLine($"Trace: succeeded={trace.Succeeded}, next={trace.NextState}, OnExitCompleted={trace.OnExitCompleted}, OnEnterCompleted={trace.OnEnterCompleted}");
+
 static void RunTransition(
     ITransitionTable<OrderStatus, OrderTrigger> table,
     OrderStatus current,

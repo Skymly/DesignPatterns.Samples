@@ -16,7 +16,9 @@
     <Project Path="DesignPatterns.Samples.EventAggregator/DesignPatterns.Samples.EventAggregator.csproj" />
     <Project Path="DesignPatterns.Samples.Factory/DesignPatterns.Samples.Factory.csproj" />
     <Project Path="DesignPatterns.Samples.GenerateSingleton/DesignPatterns.Samples.GenerateSingleton.csproj" />
+    <Project Path="DesignPatterns.Samples.HierarchicalState/DesignPatterns.Samples.HierarchicalState.csproj" />
     <Project Path="DesignPatterns.Samples.RegisterFactory/DesignPatterns.Samples.RegisterFactory.csproj" />
+    <Project Path="DesignPatterns.Samples.State/DesignPatterns.Samples.State.csproj" />
     <Project Path="DesignPatterns.Samples.Strategy/DesignPatterns.Samples.Strategy.csproj" />
   </Folder>
   <Folder Name="/Build/">

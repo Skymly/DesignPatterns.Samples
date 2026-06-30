@@ -1,7 +1,7 @@
 <Project>
   <PropertyGroup>
     <!-- Placeholder until DesignPatterns is published to nuget.org -->
-    <DesignPatternsPackageVersion>0.2.1-preview1</DesignPatternsPackageVersion>
+    <DesignPatternsPackageVersion>0.2.2</DesignPatternsPackageVersion>
 
     <DesignPatternsRepoRoot>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)../DesignPatterns'))</DesignPatternsRepoRoot>
     <DesignPatternsLocalAvailable Condition="Exists('$(DesignPatternsRepoRoot)/DesignPatterns.slnx')">true</DesignPatternsLocalAvailable>

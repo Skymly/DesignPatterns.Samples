@@ -56,16 +56,16 @@
   </ItemGroup>
 
   <ItemGroup Condition="'$(UseLocalDesignPatterns)' != 'true' and ('$(DesignPatternsSampleKind)' != '' or '$(DesignPatternsPluginProvider)' == 'true' or '$(DesignPatternsPluginAnalyzerDemo)' == 'true')">
-    <PackageReference Include="DesignPatterns" Version="$(DesignPatternsPackageVersion)" />
+    <PackageReference Include="Skymly.DesignPatterns" Version="$(DesignPatternsPackageVersion)" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(UseLocalDesignPatterns)' != 'true' and '$(DesignPatternsSampleKind)' == 'DependencyInjection'">
-    <PackageReference Include="DesignPatterns.Extensions.DependencyInjection" Version="$(DesignPatternsPackageVersion)" />
+    <PackageReference Include="Skymly.DesignPatterns.Extensions.DependencyInjection" Version="$(DesignPatternsPackageVersion)" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(UseLocalDesignPatterns)' != 'true' and ('$(DesignPatternsSampleKind)' == 'PluginAssemblies' or '$(DesignPatternsPluginProvider)' == 'true' or '$(DesignPatternsPluginAnalyzerDemo)' == 'true')">
-    <PackageReference Include="DesignPatterns.Extensions.Autofac" Version="$(DesignPatternsPackageVersion)" />
+    <PackageReference Include="Skymly.DesignPatterns.Extensions.Autofac" Version="$(DesignPatternsPackageVersion)" />
     <PackageReference Include="Autofac" Version="8.2.0" />
   </ItemGroup>
 

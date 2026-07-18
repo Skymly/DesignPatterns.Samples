@@ -8,7 +8,7 @@ Runnable console applications for **[Skymly/DesignPatterns](https://github.com/S
 
 ## Clone layout
 
-Samples default to a **local sibling** of the generator repo (no NuGet publish required yet):
+Samples default to a **local sibling** of the generator repo for development:
 
 ```
 <workspace-root>/
@@ -58,9 +58,17 @@ Equivalent: `dotnet run --project build/_build.csproj -- --root . --target Ci --
 | **DesignPatterns.Samples.State** | Manual `TransitionTableBuilder` + `[StateMachine]` / `[Transition]` order lifecycle; guard predicates; entry/exit actions; `IStateMachine` wrapper; `TransitionTrace` |
 | **DesignPatterns.Samples.PluginAssemblies** | Multi-assembly `[RegisterStrategy]` + `RegisterAutofac` + `RegistryConfiguration` (AppSettings; see nested [README](DesignPatterns.Samples.PluginAssemblies/README.md)) |
 
-## Future NuGet consumption
+## Published NuGet consumption
 
-When `DesignPatterns` is published, set `-p:UseLocalDesignPatterns=false` and pin `DesignPatternsPackageVersion` in `Directory.Build.props`.
+The published `0.2.3-preview1` package is pinned in `Directory.Build.props`. To run
+the package-backed samples, set `UseLocalDesignPatterns=false`:
+
+```powershell
+dotnet run --project build/_build.csproj -- --root . --target Ci --configuration Release --use-local-design-patterns false
+```
+
+The `PluginAssemblies` sample also uses the non-packable `AppSettings` extension
+from the sibling repository and therefore remains sibling-layout-only.
 
 ## Related
 

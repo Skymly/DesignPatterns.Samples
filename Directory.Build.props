@@ -15,7 +15,7 @@
     <DesignPatternsDiTargets>$(DesignPatternsRepoRoot)/DesignPatterns.Extensions.DependencyInjection/build/DesignPatterns.Extensions.DependencyInjection.targets</DesignPatternsDiTargets>
     <DesignPatternsAutofacProject>$(DesignPatternsRepoRoot)/DesignPatterns.Extensions.Autofac/DesignPatterns.Extensions.Autofac.csproj</DesignPatternsAutofacProject>
     <DesignPatternsAutofacTargets>$(DesignPatternsRepoRoot)/DesignPatterns.Extensions.Autofac/build/DesignPatterns.Extensions.Autofac.targets</DesignPatternsAutofacTargets>
-    <DesignPatternsAppSettingsProject>$(DesignPatternsRepoRoot)/DesignPatterns.Extensions.AppSettings/DesignPatterns.Extensions.AppSettings.csproj</DesignPatternsAppSettingsProject>
+    <DesignPatternsConfigurationProject>$(DesignPatternsRepoRoot)/DesignPatterns.Extensions.Configuration/DesignPatterns.Extensions.Configuration.csproj</DesignPatternsConfigurationProject>
     <DesignPatternsAnalyzersProject>$(DesignPatternsRepoRoot)/DesignPatterns.Analyzers/DesignPatterns.Analyzers.csproj</DesignPatternsAnalyzersProject>
   </PropertyGroup>
 </Project>

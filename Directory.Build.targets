@@ -33,7 +33,7 @@
   </ItemGroup>
 
   <ItemGroup Condition="'$(UseLocalDesignPatterns)' == 'true' and '$(DesignPatternsSampleKind)' == 'PluginAssemblies'">
-    <ProjectReference Include="$(DesignPatternsAppSettingsProject)" />
+    <ProjectReference Include="$(DesignPatternsConfigurationProject)" />
     <ProjectReference Include="$(DesignPatternsAnalyzersProject)">
       <OutputItemType>Analyzer</OutputItemType>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
@@ -70,7 +70,7 @@
   </ItemGroup>
 
   <ItemGroup Condition="'$(UseLocalDesignPatterns)' != 'true' and '$(DesignPatternsSampleKind)' == 'PluginAssemblies'">
-    <PackageReference Include="DesignPatterns.Extensions.AppSettings" Version="$(DesignPatternsPackageVersion)" />
+    <PackageReference Include="Skymly.DesignPatterns.Extensions.Configuration" Version="$(DesignPatternsPackageVersion)" />
     <PackageReference Include="System.Configuration.ConfigurationManager" Version="8.0.0" />
   </ItemGroup>
 </Project>

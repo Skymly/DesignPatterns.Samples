@@ -25,6 +25,8 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: Skymly/DesignPatterns
+          # Paired PR branches share a name; main pushes use main.
+          ref: ${{ github.head_ref || github.ref_name }}
           path: DesignPatterns
 
       - name: Checkout DesignPatterns.Samples

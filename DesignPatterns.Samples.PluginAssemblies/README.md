@@ -36,10 +36,14 @@ Each provider assembly emits its own `{Contract}Registry` in the **contract name
 
 ## Prerequisites
 
+<<<<<<< HEAD
+Sibling [DesignPatterns](https://github.com/Skymly/DesignPatterns) clone with `DesignPatterns.Extensions.Autofac` and `DesignPatterns.Extensions.Configuration` (merged on `main`).
+=======
 Either:
 
 - Sibling [DesignPatterns](https://github.com/Skymly/DesignPatterns) clone (`UseLocalDesignPatterns=true`, default), or
 - Published packages (`UseLocalDesignPatterns=false`) — needs `Skymly.DesignPatterns`, `Skymly.DesignPatterns.Extensions.Autofac`, and `Skymly.DesignPatterns.Extensions.Configuration` (pinned in `Directory.Build.props`).
+>>>>>>> origin/main
 
 ```powershell
 cd DesignPatterns.Samples

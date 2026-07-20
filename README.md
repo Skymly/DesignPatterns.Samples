@@ -60,7 +60,7 @@ Equivalent: `dotnet run --project build/_build.csproj -- --root . --target Ci --
 
 ## Published NuGet consumption
 
-The published `0.2.3-preview1` package is pinned in `Directory.Build.props`. To run
+The published `0.2.3-preview2` package is pinned in `Directory.Build.props`. To run
 the package-backed samples, set `UseLocalDesignPatterns=false`:
 
 ```powershell

@@ -67,7 +67,7 @@ the package-backed samples, set `UseLocalDesignPatterns=false`:
 dotnet run --project build/_build.csproj -- --root . --target Ci --configuration Release --use-local-design-patterns false
 ```
 
-`PluginAssemblies` also needs `Skymly.DesignPatterns.Extensions.Autofac` and `Skymly.DesignPatterns.Extensions.Configuration` (same version pin).
+`PluginAssemblies` also works fully from NuGet (`Skymly.DesignPatterns` + Autofac + Configuration extensions) when `UseLocalDesignPatterns=false`.
 
 ## Related
 

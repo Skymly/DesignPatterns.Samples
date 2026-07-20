@@ -56,7 +56,7 @@ Equivalent: `dotnet run --project build/_build.csproj -- --root . --target Ci --
 | **DesignPatterns.Samples.GenerateSingleton** | `[GenerateSingleton]` lazy singleton |
 | **DesignPatterns.Samples.DependencyInjection** | `RegisterDi` for Strategy / Factory / Handler |
 | **DesignPatterns.Samples.State** | Manual `TransitionTableBuilder` + `[StateMachine]` / `[Transition]` order lifecycle; guard predicates; entry/exit actions; `IStateMachine` wrapper; `TransitionTrace` |
-| **DesignPatterns.Samples.PluginAssemblies** | Multi-assembly `[RegisterStrategy]` + `RegisterAutofac` + `RegistryConfiguration` (AppSettings; see nested [README](DesignPatterns.Samples.PluginAssemblies/README.md)) |
+| **DesignPatterns.Samples.PluginAssemblies** | Multi-assembly `[RegisterStrategy]` + `RegisterAutofac` + `RegistryConfiguration` (`IConfiguration`; see nested [README](DesignPatterns.Samples.PluginAssemblies/README.md)) |
 
 ## Published NuGet consumption
 
@@ -67,8 +67,7 @@ the package-backed samples, set `UseLocalDesignPatterns=false`:
 dotnet run --project build/_build.csproj -- --root . --target Ci --configuration Release --use-local-design-patterns false
 ```
 
-The `PluginAssemblies` sample also uses the non-packable `AppSettings` extension
-from the sibling repository and therefore remains sibling-layout-only.
+`PluginAssemblies` needs `Skymly.DesignPatterns.Extensions.Configuration` (plus Autofac). Until that extension is published alongside the next preview, run it with the sibling local clone (`UseLocalDesignPatterns=true`, default).
 
 ## Related
 

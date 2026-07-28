@@ -10,6 +10,7 @@
   </Folder>
   <Folder Name="/Samples/">
     <Project Path="DesignPatterns.Samples.Chain/DesignPatterns.Samples.Chain.csproj" />
+    <Project Path="DesignPatterns.Samples.CommandRouter/DesignPatterns.Samples.CommandRouter.csproj" />
     <Project Path="DesignPatterns.Samples.Composite/DesignPatterns.Samples.Composite.csproj" />
     <Project Path="DesignPatterns.Samples.Decorator/DesignPatterns.Samples.Decorator.csproj" />
     <Project Path="DesignPatterns.Samples.DependencyInjection/DesignPatterns.Samples.DependencyInjection.csproj" />

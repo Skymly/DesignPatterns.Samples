@@ -21,6 +21,7 @@ sealed class Build : NukeBuild
     [
         ("DesignPatterns.Samples.Strategy/DesignPatterns.Samples.Strategy.csproj", true),
         ("DesignPatterns.Samples.Chain/DesignPatterns.Samples.Chain.csproj", true),
+        ("DesignPatterns.Samples.CommandRouter/DesignPatterns.Samples.CommandRouter.csproj", true),
         ("DesignPatterns.Samples.Composite/DesignPatterns.Samples.Composite.csproj", true),
         ("DesignPatterns.Samples.Decorator/DesignPatterns.Samples.Decorator.csproj", true),
         ("DesignPatterns.Samples.EventAggregator/DesignPatterns.Samples.EventAggregator.csproj", true),

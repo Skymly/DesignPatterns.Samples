@@ -1,6 +1,6 @@
 # DesignPatterns.Samples
 
-Runnable console applications for **[Skymly/DesignPatterns](https://github.com/Skymly/DesignPatterns)** — Strategy, Chain of Responsibility, Composite, Factory Registry, Decorator, Event Aggregator, State transition table, Singleton, and MSDI integration.
+Runnable console applications for **[Skymly/DesignPatterns](https://github.com/Skymly/DesignPatterns)** — Strategy, Chain of Responsibility, Command Router, Composite, Factory Registry, Decorator, Event Aggregator, State transition table, Singleton, and MSDI integration.
 
 ## Prerequisites
 
@@ -48,6 +48,7 @@ Equivalent: `dotnet run --project build/_build.csproj -- --root . --target Ci --
 |--------|--------------|
 | **DesignPatterns.Samples.Strategy** | `[RegisterStrategy]` → Keys + static `Instance` registry; sync pay + async `ExecuteAsync`; guard predicate (`TryGetWithGuard`); execution tracing (`ExecuteTracedAsync`) |
 | **DesignPatterns.Samples.Chain** | `[HandlerOrder]` → generated handler pipeline; traced invocation (`InvokeTracedAsync`); exception observability (`IHandlerExceptionObserver`) |
+| **DesignPatterns.Samples.CommandRouter** | Manual `CommandRouterBuilder` + `[RegisterCommandHandler]` → `SendAsync` / `TrySendAsync`; DI via `RegisterDi` + `AddCommandRouter` |
 | **DesignPatterns.Samples.Composite** | `[CompositePart]` → `BuildForest()` / `TraverseForest` (+ `BuildRoot`, manual builder) |
 | **DesignPatterns.Samples.Factory** | `[RegisterFactory]` factory registry; async factory (`IAsyncFactoryRegistry`); pooled factory (`IPooledFactoryRegistry` with `RentAsync`/`Return`) |
 | **DesignPatterns.Samples.RegisterFactory** | Manual `FactoryRegistryBuilder` registration |

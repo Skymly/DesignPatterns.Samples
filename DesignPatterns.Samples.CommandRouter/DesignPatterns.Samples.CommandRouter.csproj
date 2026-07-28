@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <RootNamespace>DesignPatterns.Samples.CommandRouter</RootNamespace>
+    <DesignPatternsSampleKind>DependencyInjection</DesignPatternsSampleKind>
+    <Description>Console sample for Command Router: manual builder, [RegisterCommandHandler] generator, SendAsync / TrySendAsync, and DI (RegisterDi + AddCommandRouter).</Description>
+  </PropertyGroup>
+
+</Project>

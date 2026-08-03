@@ -1,6 +1,6 @@
 # DesignPatterns.Samples
 
-Runnable console applications for **[Skymly/DesignPatterns](https://github.com/Skymly/DesignPatterns)** — Strategy, Chain of Responsibility, Command Router, Composite, Factory Registry, Decorator, Event Aggregator, State transition table, Singleton, and MSDI integration.
+Runnable console applications for **[Skymly/DesignPatterns](https://github.com/Skymly/DesignPatterns)** — Strategy, Chain of Responsibility, Command Router, Composite, Factory Registry, Decorator, Event Aggregator, State transition table, Step Builder, Singleton, and MSDI integration.
 
 ## Prerequisites
 
@@ -57,6 +57,7 @@ Equivalent: `dotnet run --project build/_build.csproj -- --root . --target Ci --
 | **DesignPatterns.Samples.GenerateSingleton** | `[GenerateSingleton]` lazy singleton |
 | **DesignPatterns.Samples.DependencyInjection** | `RegisterDi` for Strategy / Factory / Handler |
 | **DesignPatterns.Samples.State** | Manual `TransitionTableBuilder` + `[StateMachine]` / `[Transition]` order lifecycle; guard predicates; entry/exit actions; `IStateMachine` wrapper; `TransitionTrace` |
+| **DesignPatterns.Samples.StepBuilder** | `[GenerateBuilder]` HTTP request: required Url+Method type-state; optional Header/Body; mutex BearerToken vs BasicAuth |
 | **DesignPatterns.Samples.PluginAssemblies** | Multi-assembly `[RegisterStrategy]` + `RegisterAutofac` + `RegistryConfiguration` (`IConfiguration`; see nested [README](DesignPatterns.Samples.PluginAssemblies/README.md)) |
 
 ## Published NuGet consumption

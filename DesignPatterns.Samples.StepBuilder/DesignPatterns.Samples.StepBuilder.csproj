@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <RootNamespace>DesignPatterns.Samples.StepBuilder</RootNamespace>
+    <DesignPatternsSampleKind>Core</DesignPatternsSampleKind>
+    <Description>Console sample for Step Builder: [GenerateBuilder] HTTP-style request with required Url+Method, optional Header/Body, and mutex BearerToken vs BasicAuth.</Description>
+  </PropertyGroup>
+
+</Project>

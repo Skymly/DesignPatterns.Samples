@@ -21,12 +21,22 @@ jobs:
   samples:
     runs-on: ubuntu-latest
     steps:
+      # Paired library PRs share a branch name; Samples-only work falls back to main.
+      - name: Resolve DesignPatterns sibling ref
+        id: sibling
+        run: |
+          REF='${{ github.head_ref || github.ref_name }}'
+          if git ls-remote --exit-code --heads "https://github.com/Skymly/DesignPatterns.git" "$REF" >/dev/null 2>&1; then
+            echo "ref=$REF" >> "$GITHUB_OUTPUT"
+          else
+            echo "ref=main" >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Checkout DesignPatterns (sibling)
         uses: actions/checkout@v4
         with:
           repository: Skymly/DesignPatterns
-          # Paired PR branches share a name; main pushes use main.
-          ref: ${{ github.head_ref || github.ref_name }}
+          ref: ${{ steps.sibling.outputs.ref }}
           path: DesignPatterns
 
       - name: Checkout DesignPatterns.Samples

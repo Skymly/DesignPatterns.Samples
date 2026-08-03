@@ -30,6 +30,7 @@ sealed class Build : NukeBuild
         ("DesignPatterns.Samples.RegisterFactory/DesignPatterns.Samples.RegisterFactory.csproj", true),
         ("DesignPatterns.Samples.DependencyInjection/DesignPatterns.Samples.DependencyInjection.csproj", true),
         ("DesignPatterns.Samples.State/DesignPatterns.Samples.State.csproj", true),
+        ("DesignPatterns.Samples.StepBuilder/DesignPatterns.Samples.StepBuilder.csproj", true),
         ("DesignPatterns.Samples.HierarchicalState/DesignPatterns.Samples.HierarchicalState.csproj", true),
     ];
 

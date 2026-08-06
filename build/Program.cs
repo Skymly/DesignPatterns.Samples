@@ -32,6 +32,7 @@ sealed class Build : NukeBuild
         ("DesignPatterns.Samples.State/DesignPatterns.Samples.State.csproj", true),
         ("DesignPatterns.Samples.StepBuilder/DesignPatterns.Samples.StepBuilder.csproj", true),
         ("DesignPatterns.Samples.HierarchicalState/DesignPatterns.Samples.HierarchicalState.csproj", true),
+        ("DesignPatterns.Samples.WorkGraph/DesignPatterns.Samples.WorkGraph.csproj", true),
     ];
 
     AbsolutePath PluginAssembliesHostProject =>

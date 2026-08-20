@@ -22,6 +22,8 @@ This repository contains **sample console apps only**. Do not add generators or 
 
 ## Agent skills
 
+本仓库**不内置** Skills。代理只使用维护者本机技能（通常为 `~/.agents/skills` / Cursor 用户技能），不要再往本仓拷贝 `.agents/skills` 或 `skills-lock.json`。
+
 ### Issue tracker
 
 Issues live in this repo's GitHub Issues (via `gh`). See `docs/agents/issue-tracker.md`.

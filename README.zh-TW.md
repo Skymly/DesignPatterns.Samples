@@ -2,6 +2,8 @@
 
 [English](README.md) | [简体中文](README.zh-CN.md) | **繁體中文** | [日本語](README.ja.md)
 
+[![CI](https://github.com/Skymly/DesignPatterns.Samples/actions/workflows/ci.yml/badge.svg)](https://github.com/Skymly/DesignPatterns.Samples/actions/workflows/ci.yml)
+
 **[Skymly/DesignPatterns](https://github.com/Skymly/DesignPatterns)** 的可執行主控台範例集 —— 涵蓋 Strategy、Chain of Responsibility、Command Router、Composite、Factory Registry、Decorator、Event Aggregator、State 狀態轉換表、Step Builder、Fork–Join Work Graph、Singleton 與 MSDI 整合。
 
 ## 環境需求
@@ -13,12 +15,10 @@
 範例預設放置於產生器主儲存庫的**同層目錄**以便本機開發：
 
 ```
-<workspace-root>/
-  Skymly/
-    DesignPatterns/
-      DesignPatterns/
-      DesignPatterns.Samples/    ← 本儲存庫
-      DesignPatterns.Docs/
+<workspace>/
+  DesignPatterns/
+  DesignPatterns.Samples/    ← 本儲存庫
+  DesignPatterns.Docs/
 ```
 
 ```powershell

@@ -2,6 +2,8 @@
 
 **English** | [简体中文](README.zh-CN.md) | [繁體中文](README.zh-TW.md) | [日本語](README.ja.md)
 
+[![CI](https://github.com/Skymly/DesignPatterns.Samples/actions/workflows/ci.yml/badge.svg)](https://github.com/Skymly/DesignPatterns.Samples/actions/workflows/ci.yml)
+
 Runnable console applications for **[Skymly/DesignPatterns](https://github.com/Skymly/DesignPatterns)** — Strategy, Chain of Responsibility, Command Router, Composite, Factory Registry, Decorator, Event Aggregator, State transition table, Step Builder, Fork–Join Work Graph, Singleton, and MSDI integration.
 
 ## Prerequisites
@@ -13,12 +15,10 @@ Runnable console applications for **[Skymly/DesignPatterns](https://github.com/S
 Samples default to a **local sibling** of the generator repo for development:
 
 ```
-<workspace-root>/
-  Skymly/
-    DesignPatterns/
-      DesignPatterns/
-      DesignPatterns.Samples/    ← this repo
-      DesignPatterns.Docs/
+<workspace>/
+  DesignPatterns/
+  DesignPatterns.Samples/    ← this repo
+  DesignPatterns.Docs/
 ```
 
 ```powershell

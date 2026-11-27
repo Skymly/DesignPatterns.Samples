@@ -2,6 +2,8 @@
 
 [English](README.md) | **简体中文** | [繁體中文](README.zh-TW.md) | [日本語](README.ja.md)
 
+[![CI](https://github.com/Skymly/DesignPatterns.Samples/actions/workflows/ci.yml/badge.svg)](https://github.com/Skymly/DesignPatterns.Samples/actions/workflows/ci.yml)
+
 **[Skymly/DesignPatterns](https://github.com/Skymly/DesignPatterns)** 的可运行控制台示例集 —— 涵盖 Strategy、Chain of Responsibility、Command Router、Composite、Factory Registry、Decorator、Event Aggregator、State 状态转换表、Step Builder、Fork–Join Work Graph、Singleton 以及 MSDI 集成。
 
 ## 环境要求
@@ -13,12 +15,10 @@
 示例默认与生成器主仓**同级并列**放置以便本地开发：
 
 ```
-<workspace-root>/
-  Skymly/
-    DesignPatterns/
-      DesignPatterns/
-      DesignPatterns.Samples/    ← 本仓库
-      DesignPatterns.Docs/
+<workspace>/
+  DesignPatterns/
+  DesignPatterns.Samples/    ← 本仓库
+  DesignPatterns.Docs/
 ```
 
 ```powershell

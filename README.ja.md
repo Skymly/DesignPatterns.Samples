@@ -2,6 +2,8 @@
 
 [English](README.md) | [简体中文](README.zh-CN.md) | [繁體中文](README.zh-TW.md) | **日本語**
 
+[![CI](https://github.com/Skymly/DesignPatterns.Samples/actions/workflows/ci.yml/badge.svg)](https://github.com/Skymly/DesignPatterns.Samples/actions/workflows/ci.yml)
+
 **[Skymly/DesignPatterns](https://github.com/Skymly/DesignPatterns)** 向けの実行可能なコンソールサンプル集です — Strategy、Chain of Responsibility、Command Router、Composite、Factory Registry、Decorator、Event Aggregator、State 遷移テーブル、Step Builder、Fork–Join Work Graph、Singleton、MSDI 統合を網羅しています。
 
 ## 前提条件
@@ -13,12 +15,10 @@
 開発時は生成元リポジトリの**兄弟ディレクトリ**に配置する構成を既定としています：
 
 ```
-<workspace-root>/
-  Skymly/
-    DesignPatterns/
-      DesignPatterns/
-      DesignPatterns.Samples/    ← 本リポジトリ
-      DesignPatterns.Docs/
+<workspace>/
+  DesignPatterns/
+  DesignPatterns.Samples/    ← 本リポジトリ
+  DesignPatterns.Docs/
 ```
 
 ```powershell
